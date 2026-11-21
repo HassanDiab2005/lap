@@ -25,6 +25,14 @@
   min-height: 0;
 }
 
+/* Keep the fullscreen workbench focused on the lab scene. */
+:fullscreen .lab-view > header,
+:fullscreen .workbench-toolbar,
+:fullscreen .workbench-help,
+:fullscreen .lab-hands {
+  display: none !important;
+}
+
 :fullscreen .lab-layout {
   min-height: 0;
   gap: 0;
