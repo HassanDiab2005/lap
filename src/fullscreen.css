@@ -1,9 +1,12 @@
-/* Fullscreen edge-to-edge layout. These overrides are scoped to fullscreen so the normal layout is unchanged. */
-:fullscreen {
+/* Fullscreen: remove the empty side area and show only the experiment scene. */
+:fullscreen,
+body.pseudo-fullscreen {
   margin: 0 !important;
   padding: 0 !important;
   width: 100vw !important;
   height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
   overflow: hidden !important;
 }
 
@@ -11,49 +14,93 @@
   background: #0b1220;
 }
 
-:fullscreen body {
-  width: 100%;
-  height: 100%;
+:fullscreen body,
+body.pseudo-fullscreen {
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden;
 }
 
-:fullscreen #root {
-  width: 100%;
-  height: 100%;
+:fullscreen #root,
+body.pseudo-fullscreen #root {
+  width: 100vw;
+  height: 100dvh;
   min-height: 0;
+  max-width: none;
+  max-height: none;
 }
 
-/* Keep the fullscreen workbench focused on the lab scene. */
-:fullscreen .lab-view > header,
+/* Hide app chrome and side panels in fullscreen. */
+:fullscreen header,
 :fullscreen .workbench-toolbar,
 :fullscreen .workbench-help,
-:fullscreen .lab-hands {
+:fullscreen .lab-side-panel,
+:fullscreen .lab-instructions,
+:fullscreen .lab-hands,
+body.pseudo-fullscreen header,
+body.pseudo-fullscreen .workbench-toolbar,
+body.pseudo-fullscreen .workbench-help,
+body.pseudo-fullscreen .lab-side-panel,
+body.pseudo-fullscreen .lab-instructions,
+body.pseudo-fullscreen .lab-hands {
   display: none !important;
 }
 
-:fullscreen .lab-layout {
+:fullscreen .lab-layout,
+body.pseudo-fullscreen .lab-layout {
+  width: 100vw;
+  height: 100dvh;
   min-height: 0;
   gap: 0;
   padding: 0 !important;
+  overflow: hidden;
 }
 
-:fullscreen .workbench-viewport {
+:fullscreen .workbench,
+body.pseudo-fullscreen .workbench {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+}
+
+:fullscreen .workbench-viewport,
+body.pseudo-fullscreen .workbench-viewport {
+  width: 100vw;
+  height: 100dvh;
+  flex: 1 1 100dvh;
+  min-width: 100vw;
+  min-height: 100dvh;
+  margin: 0;
   border: 0;
   border-radius: 0;
+  overflow: hidden;
   scrollbar-width: none;
 }
 
-:fullscreen .workbench-viewport::-webkit-scrollbar {
+:fullscreen .workbench-viewport::-webkit-scrollbar,
+body.pseudo-fullscreen .workbench-viewport::-webkit-scrollbar {
   display: none;
 }
 
-:fullscreen .workbench-canvas {
-  margin-inline: 0;
+:fullscreen .workbench-canvas,
+body.pseudo-fullscreen .workbench-canvas {
+  width: 100vw !important;
+  height: 100dvh;
+  min-width: 100vw;
+  min-height: 100dvh;
+  margin: 0;
+  align-items: stretch;
 }
 
-:fullscreen .workbench-canvas .scene {
+:fullscreen .workbench-canvas .scene,
+body.pseudo-fullscreen .workbench-canvas .scene {
+  width: 100vw !important;
+  height: 100dvh !important;
+  min-width: 100vw;
+  min-height: 100dvh;
   border: 0;
   border-radius: 0;
+  aspect-ratio: auto !important;
+  box-shadow: none;
 }
