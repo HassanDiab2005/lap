@@ -46,6 +46,25 @@ body.pseudo-fullscreen .lab-hands {
   display: none !important;
 }
 
+.fullscreen-exit-button {
+  position: fixed;
+  z-index: 2147483647;
+  top: max(12px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #fff;
+  font: 600 14px/1.2 system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.fullscreen-exit-button:hover {
+  background: #334155;
+}
+
 :fullscreen .lab-layout,
 body.pseudo-fullscreen .lab-layout {
   width: 100vw;
